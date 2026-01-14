@@ -73,7 +73,11 @@ void main() throws IOException {
     bufferedWriter.close();
 
 
-    System.out.println("\nZadanie 1 - Praca z plikami – pełny zestaw:\n");
+    System.out.println("\nZadanie: - Praca z plikami – pełny zestaw:\n");
+
+
+
+    System.out.println("Zad 1:\n");
 
     BufferedWriter newNamesFile = new BufferedWriter(new FileWriter("students.txt"));
     newNamesFile.write("Ewelina\n");
@@ -83,30 +87,52 @@ void main() throws IOException {
     newNamesFile.write("Łukasz\n");
     newNamesFile.close();
 
+
+
+    System.out.println("Zad 2:\n");
+
     BufferedReader readNamesFile = new BufferedReader(new FileReader("students.txt"));
-    List<String> allNames = readNamesFile.readAllLines();
-
-    List<String> nameOnA = new ArrayList<>();
-    for (String name : allNames) {
-        if (name.startsWith("A"))
-            nameOnA.add(name);
-        System.out.println(name);
-    }
-
+    System.out.println(readNamesFile.readLine());
+    System.out.println(readNamesFile.readLine());
+    System.out.println(readNamesFile.readLine());
+    System.out.println(readNamesFile.readLine());
+    System.out.println(readNamesFile.readLine());
     readNamesFile.close();
+
+
+
+    System.out.println("\nZad 3:\n");
 
     BufferedReader readNamesLoop = new BufferedReader(new FileReader("students.txt"));
 
     int lineCounter = 0;
-    String lineReading = null;
-    while ((lineReading = readNamesLoop.readLine()) != null) {
+    while ((readNamesLoop.readLine()) != null) {
         lineCounter++;
     }
     readNamesLoop.close();
 
-    System.out.println("\nIn this file we have " + lineCounter + " lines.\n");
+    System.out.println("In this file we have " + lineCounter + " lines.\n");
 
-    System.out.println("Here's all name which starts with 'A': " + nameOnA +"\n");
+
+
+    System.out.println("Zad 4:\n");
+
+    BufferedReader readForList = new BufferedReader(new FileReader("students.txt"));
+    List<String> allNames = readForList.readAllLines();
+    readForList.close();
+
+    List<String> nameOnA = new ArrayList<>();
+    for (String name : allNames) {
+        if (name.startsWith("A")) {
+            nameOnA.add(name);
+        }
+    }
+
+    System.out.println("Here's all name which starts with 'A': " + nameOnA + "\n");
+
+
+
+    System.out.println("Zad 5:\n:");
 
     BufferedWriter newNumbersFile = new BufferedWriter(new FileWriter("numbers.txt"));
     newNumbersFile.write("1\n");
@@ -123,11 +149,15 @@ void main() throws IOException {
 
     BufferedReader readNumbersFile = new BufferedReader(new FileReader("numbers.txt"));
     List<String> allNumbers = readNumbersFile.readAllLines();
+    readNumbersFile.close();
 
     for (String number : allNumbers) {
         System.out.println(number);
     }
-    readNumbersFile.close();
+
+
+
+    System.out.println("\nZad 6:\n");
 
     BufferedReader readNumbersLoop = new BufferedReader(new FileReader("numbers.txt"));
 
@@ -138,7 +168,11 @@ void main() throws IOException {
     }
     readNumbersLoop.close();
 
-    System.out.println("\nOur total is: " + total + "\n");
+    System.out.println("Our total is: " + total + "\n");
+
+
+
+    System.out.println("Zad 7:\n");
 
     BufferedWriter newNamesFileToAppend = new BufferedWriter(new FileWriter("students.txt", true));
     newNamesFileToAppend.write("Adam\n");
@@ -146,21 +180,21 @@ void main() throws IOException {
     newNamesFileToAppend.write("Anna\n");
     newNamesFileToAppend.close();
 
+
+
+    System.out.println("Zad 8:\n");
+
     BufferedReader readNewNamesFile = new BufferedReader(new FileReader("students.txt"));
     List<String> newNameList = readNewNamesFile.readAllLines();
+    readNewNamesFile.close();
 
     for (int i = 1; i <= newNameList.size(); i++) {
-        System.out.println(i + ": " + newNameList.get(i - 1) + i);
+        System.out.println(i + ": " + newNameList.get(i - 1));
     }
 
-    String longestName = newNameList.get(0);
-    for (String name : newNameList) {
-        if (name.length() > longestName.length()) {
-            longestName = name;
-        }
-    }
 
-    readNewNamesFile.close();
+
+    System.out.println("\nZad 9:\n");
 
     BufferedReader readToCopy = new BufferedReader(new FileReader("students.txt"));
     List<String> listForCopy = readToCopy.readAllLines();
@@ -170,55 +204,52 @@ void main() throws IOException {
     writeNewCopy.write(String.valueOf(listForCopy));
     writeNewCopy.close();
 
-    System.out.println("\nOur longest name is: " + longestName + ".\n");
 
-    BufferedReader smallAfinder = new BufferedReader(new FileReader("students.txt"));
-    smallAfinder.readAllLines();
+
+    System.out.println("Zad 10:\n");
+
+    String longestName = newNameList.get(0);
+    for (String name1 : newNameList) {
+        if (name1.length() > longestName.length()) {
+            longestName = name1;
+        }
+    }
+    System.out.println("Our longest name is: " + longestName + ".\n");
+
+
+
+    System.out.println("Zad 11:\n");
 
     int aCounter = 0;
-    for (String name : newNameList) {
-        if (name.contains("a")) {
-            aCounter++;
+    for (String name3 : newNameList) {
+        for (int i = 0; i < name3.length(); i++) {
+            char c = name3.charAt(i);
+            if (c == 'a') {
+                aCounter++;
+            }
         }
     }
 
-    smallAfinder.close();
+    System.out.println("We have " + aCounter + " small 'a' letters.\n");
 
-    System.out.println("We have " + aCounter + " small 'a' letters.");
+
+    System.out.println("Zad 12:\n");
 
     BufferedReader nameAsList = new BufferedReader(new FileReader("students.txt"));
     List<String> namesList = nameAsList.readAllLines();
     nameAsList.close();
 
-    for (int i = 0; i < namesList.size(); i++) {
-        String name = namesList.get(i);
-        String nameWithNumber = name + (i + 1);
-        namesList.set(i, nameWithNumber);
-    }
-
     System.out.println(namesList);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+//Dodać wszystkie projekty do GITa
+//POCZYTAĆ CZYM SĄ:
+//squashowanie commitów
+//rebase
+//stash
+//pull, push, commit, merge, czym jest pull request
+
 
 
 
