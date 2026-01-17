@@ -92,11 +92,12 @@ void main() throws IOException {
     System.out.println("Zad 2:\n");
 
     BufferedReader readNamesFile = new BufferedReader(new FileReader("students.txt"));
-    System.out.println(readNamesFile.readLine());
-    System.out.println(readNamesFile.readLine());
-    System.out.println(readNamesFile.readLine());
-    System.out.println(readNamesFile.readLine());
-    System.out.println(readNamesFile.readLine());
+
+    String oneName;
+    while ((oneName = readNamesFile.readLine()) != null) {
+        System.out.println(oneName);
+    }
+
     readNamesFile.close();
 
 
@@ -197,11 +198,14 @@ void main() throws IOException {
     System.out.println("\nZad 9:\n");
 
     BufferedReader readToCopy = new BufferedReader(new FileReader("students.txt"));
-    List<String> listForCopy = readToCopy.readAllLines();
-    readToCopy.close();
-
     BufferedWriter writeNewCopy = new BufferedWriter(new FileWriter("copy.txt"));
-    writeNewCopy.write(String.valueOf(listForCopy));
+
+    String nameToCopy;
+    while((nameToCopy = readToCopy.readLine()) != null) {
+        writeNewCopy.write(nameToCopy + "\n");
+    }
+
+    readToCopy.close();
     writeNewCopy.close();
 
 
